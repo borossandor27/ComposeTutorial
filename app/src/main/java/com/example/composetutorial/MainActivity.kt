@@ -42,7 +42,7 @@ data class Message(val author: String, val body: String)
 
 @Composable
 fun MessageCard(msg: Message) {
-    Row(modifier = Modifier.padding(all = 8.dp)) {
+    Row(modifier = Modifier.padding(all = 32.dp)) {
         Image(
             painter = painterResource(id = R.drawable.profile_picture),
             contentDescription = "Contact profile picture",
@@ -54,12 +54,14 @@ fun MessageCard(msg: Message) {
         )
         //-- Add horizontal space between the image and the column
         Spacer(modifier = Modifier.size(8.dp))
+        Column {
+            Text(text = msg.author)
+            //-- Add a vertical space between the author and message texts
+            Spacer(modifier = Modifier.size(4.dp))
+            Text(text = msg.body)
+        }
     }
-    Column {
-        Text(text = msg.author)
-        Spacer(modifier = Modifier.size(4.dp))  // Add a vertical space between the author and message
-        Text(text = msg.body)
-    }
+
 
 }
 
